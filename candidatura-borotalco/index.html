@@ -103,15 +103,21 @@
     }
     .s-byline { margin-bottom: 6px; }
     .s-author { letter-spacing: 1px; margin-bottom: 30px; }
-    .s-submitted { color: #555; margin-top: 10px; }
+    .s-submitted {
+      color: #555;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
     .s-submitted-logo {
-      display: inline-block;
-      height: 18px;
+      display: block;
+      height: 20px;
       width: auto;
-      vertical-align: middle;
-      margin-left: 8px;
-      margin-top: -2px;
-      opacity: 0.75;
+      /* Bianco → nero per il copione a sfondo chiaro */
+      filter: invert(1);
+      opacity: 0.8;
     }
 
     .s-meta-bottom {
@@ -360,13 +366,18 @@
             <div class="s-title">//CANDIDATURA</div>
             <div class="s-byline">Written and Directed by</div>
             <div class="s-author">Valerio Francini</div>
-            <div class="s-submitted">submitted to: <strong>Borotalco TV</strong><img src="/images/borotalco-logo.png" alt="Borotalco TV" class="s-submitted-logo"></div>
+            <div class="s-submitted">
+              submitted to:
+              <a href="https://www.borotalco.tv/" target="_blank" rel="noopener">
+                <img src="https://www.borotalco.tv/wp-content/themes/borotalco/images/logo-white.svg" alt="Borotalco TV" class="s-submitted-logo">
+              </a>
+            </div>
           </div>
 
           <div class="s-meta-bottom">
             <div class="s-contact-info">
-              vxly.ps@gmail.com<br>
-              @vxly.ps (ig)
+              <a href="mailto:vxly.ps@gmail.com" style="color:inherit;text-decoration:none;font-style:italic;">vxly.ps@gmail.com</a><br>
+              <a href="https://instagram.com/vxly.ps" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;font-style:italic;">@vxly.ps</a>
             </div>
             <div class="s-meta-right">
               Draft #01<br>
