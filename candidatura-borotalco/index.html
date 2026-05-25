@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidatura — Valerio Francini × Borotalco TV</title>
+  <!-- Pagina privata: non indicizzare -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/images/faccia-normale.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    ::selection { background: #fff50a; color: #000; }
+
+    body {
+      background: #000;
+      color: #c8c8c8;
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    a { transition: color 0.2s; }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 70px 6vw 120px;
+    }
+
+    /* =============================================
+       COVER PAGE
+       ============================================= */
+    .cover {
+      border-bottom: 1px solid #222;
+      padding-bottom: 70px;
+      margin-bottom: 90px;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 100px;
+      font-size: 0.8em;
+      color: #555;
+    }
+    .cover-top strong { color: #fff50a; }
+
+    .cover-center {
+      text-align: center;
+      margin-bottom: 100px;
+    }
+    .cover-title {
+      display: block;
+      font-size: 2.4em;
+      font-weight: 700;
+      color: #fff50a;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      margin-bottom: 36px;
+    }
+    .cover-byline {
+      color: #555;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+    .cover-author {
+      color: #e8e8e8;
+      font-weight: 700;
+      font-size: 1.15em;
+      margin-bottom: 24px;
+    }
+    .cover-submitted {
+      color: #555;
+      font-size: 0.9em;
+    }
+    .cover-submitted strong { color: #fff50a; }
+
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 0.8em;
+      color: #555;
+    }
+    .cover-bottom a { color: #777; text-decoration: none; }
+    .cover-bottom a:hover { color: #fff50a; }
+
+    /* =============================================
+       CORPO SCENEGGIATURA
+       ============================================= */
+    .script-body { padding-bottom: 40px; }
+
+    .transition {
+      text-transform: uppercase;
+      color: #fff50a;
+      font-weight: 700;
+      font-size: 0.9em;
+      letter-spacing: 0.08em;
+      margin: 60px 0 36px;
+    }
+    .transition.right { text-align: right; }
+
+    .slug-line {
+      text-transform: uppercase;
+      color: #fff50a;
+      font-weight: 700;
+      font-size: 0.85em;
+      letter-spacing: 0.06em;
+      margin: 56px 0 22px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #1f1f1f;
+    }
+
+    .action {
+      max-width: 600px;
+      margin-bottom: 22px;
+      color: #888;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    /* Formattazione dialogo standard: character centrato, dialogo rientrato */
+    .character {
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #e0e0e0;
+      margin-top: 32px;
+      margin-bottom: 2px;
+      margin-left: clamp(60px, 22%, 200px);
+    }
+    .paren {
+      color: #666;
+      font-style: italic;
+      margin-left: clamp(44px, 16%, 150px);
+      margin-bottom: 0;
+    }
+    .dialogue {
+      color: #d0d0d0;
+      margin-left: clamp(28px, 10%, 100px);
+      max-width: clamp(280px, 58%, 460px);
+      margin-bottom: 6px;
+      line-height: 1.8;
+    }
+
+    /* =============================================
+       GRIGLIA VIDEO
+       ============================================= */
+    .videos-section { margin: 36px 0 10px; }
+
+    .videos-label {
+      font-size: 0.75em;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 30px;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #0a0a0a;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .video-meta {
+      font-size: 0.82em;
+      color: #666;
+      line-height: 1.6;
+    }
+    .video-meta strong {
+      color: #c0c0c0;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 1em;
+    }
+    .video-meta .awards {
+      color: #fff50a;
+      font-size: 0.88em;
+      margin-top: 5px;
+    }
+
+    /* =============================================
+       ABOUT / FOTO
+       ============================================= */
+    .about-block {
+      display: flex;
+      gap: 44px;
+      align-items: flex-start;
+      margin: 36px 0;
+    }
+    .about-photo {
+      flex: 0 0 230px;
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+    }
+    .about-text { flex: 1; }
+    /* Nel blocco about i rientri del dialogo sono azzerati (spazio già dato dal flex) */
+    .about-text .character { margin-left: 0; }
+    .about-text .paren     { margin-left: 0; }
+    .about-text .dialogue  { margin-left: 0; max-width: 100%; }
+
+    /* =============================================
+       END BLOCK
+       ============================================= */
+    .end-block {
+      border-top: 1px solid #1a1a1a;
+      padding-top: 70px;
+      margin-top: 80px;
+    }
+
+    .the-end {
+      text-align: center;
+      font-size: 1em;
+      font-weight: 700;
+      color: #fff50a;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 70px;
+    }
+
+    /* Blocco firma */
+    .signature-block {
+      border: 1px solid #1e1e1e;
+      padding: 28px 36px;
+      margin-bottom: 70px;
+      font-size: 0.82em;
+      color: #555;
+    }
+    .sig-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .sig-row:last-child { margin-bottom: 0; }
+    .sig-label { white-space: nowrap; flex-shrink: 0; }
+    .sig-line  { flex: 1; border-bottom: 1px solid #2a2a2a; height: 18px; }
+    .sig-value { white-space: nowrap; flex-shrink: 0; color: #888; }
+    .sig-value.pending { color: #333; font-style: italic; }
+
+    /* Sezione torna al sito */
+    .back-block {
+      border-top: 1px solid #141414;
+      padding-top: 50px;
+      text-align: center;
+    }
+    .back-block .back-note {
+      font-size: 0.78em;
+      color: #444;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+    .back-block .back-link {
+      display: inline-block;
+      color: #e8e8e8;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid #444;
+      padding-bottom: 3px;
+      margin-bottom: 36px;
+    }
+    .back-block .back-link:hover { color: #fff50a; border-color: #fff50a; }
+
+    .contacts-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .contacts-row a {
+      color: #555;
+      text-decoration: none;
+      font-size: 0.82em;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .contacts-row a:hover { color: #fff50a; }
+    .contacts-row .dot { color: #222; }
+
+    /* =============================================
+       MOBILE
+       ============================================= */
+    @media (max-width: 680px) {
+      .page { padding: 40px 5vw 80px; }
+      .cover-top { flex-direction: column; gap: 8px; margin-bottom: 60px; }
+      .cover-bottom { flex-direction: column; gap: 10px; }
+      .cover-title { font-size: 1.7em; letter-spacing: 0.1em; }
+      .videos-grid { grid-template-columns: 1fr; gap: 28px; }
+      .about-block { flex-direction: column; }
+      .about-photo { flex: none; width: 100%; max-width: 280px; margin: 0 auto; }
+      .character, .paren, .dialogue { margin-left: 0; max-width: 100%; }
+      .signature-block { padding: 20px; }
+      .sig-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .sig-line { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===================== COVER ===================== -->
+  <div class="cover">
+    <div class="cover-top">
+      <span>RISERVATO A: <strong>BOROTALCO TV</strong></span>
+      <span>pag. 1.</span>
+    </div>
+
+    <div class="cover-center">
+      <span class="cover-title">Candidatura</span>
+      <p class="cover-byline">written and directed by</p>
+      <p class="cover-author">Valerio Francini</p>
+      <br>
+      <p class="cover-submitted">submitted to: <strong>Borotalco TV</strong></p>
+    </div>
+
+    <div class="cover-bottom">
+      <div>
+        vxly.ps@gmail.com<br>
+        <a href="https://instagram.com/vxly.ps" target="_blank" rel="noopener">@vxly.ps ↗</a>
+      </div>
+      <div style="text-align:right">
+        draft #01<br>
+        Roma, 2025
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <div class="script-body">
+
+    <div class="transition">FADE IN.</div>
+
+    <!-- SCENA 1 -->
+    <div class="slug-line">INT. ROMA — UNA STANZA CHE PUZZA DI ACETONE — NOTTE</div>
+
+    <p class="action">
+      Luce di monitor. VALERIO FRANCINI (26) davanti a una moviola.<br>
+      Sul pavimento: bobine di Super8, un caffè freddo, la stampa<br>
+      di un frame che non torna.
+    </p>
+    <p class="action">Si ferma. Si gira.</p>
+
+    <p class="character">VALERIO (V.O.)</p>
+    <p class="dialogue">
+      Mi chiamo Valerio Francini.<br>
+      Faccio film perché non so smettere<br>
+      di guardarli.
+    </p>
+
+    <!-- SCENA 2 -->
+    <div class="slug-line">EXT. INTERNET — QUESTA SCHERMATA — ADESSO</div>
+
+    <p class="character">VALERIO (V.O.)</p>
+    <p class="dialogue">
+      Vi scrivo perché i vostri lavori<br>
+      mi fanno incazzare — nel senso buono.<br>
+      Quella roba che guardi e pensi:<br>
+      "cazzo, avrei voluto farlo io."
+    </p>
+
+    <p class="character">VALERIO (V.O.) (CONT'D)</p>
+    <p class="dialogue">
+      Ho 26 anni, sono di Roma.<br>
+      Ho girato music video e cortometraggi —<br>
+      alcuni in 16mm e Super8, perché<br>
+      il digitale non sbaglia mai<br>
+      e a me piace sbagliare nel modo giusto.
+    </p>
+
+    <p class="character">VALERIO (V.O.) (CONT'D)</p>
+    <p class="dialogue">
+      Ho studiato filosofia. Non per fare<br>
+      il filosofo — per avere qualcosa<br>
+      da dire quando accendo la camera.
+    </p>
+
+    <div class="transition right">CUT TO:</div>
+
+    <!-- SCENA 3: LAVORI -->
+    <div class="slug-line">INT. SALA PROIEZIONI — BUIO TOTALE</div>
+
+    <p class="action">
+      Il proiettore si accende. Quattro lavori recenti.<br>
+      Guardate voi se vale la pena.
+    </p>
+
+    <div class="videos-section">
+      <p class="videos-label">// music videos</p>
+      <div class="videos-grid">
+
+        <div class="video-entry">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Jr6r6PKVDSw" title="MASKARA" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-meta">
+            <strong>MASKARA — Ycon Ydol</strong>
+            2025 · Regia: Valerio Francini<br>
+            Formato: 16mm + Super8
+            <div class="awards">↳ Europe Music Video Award · Toronto IMVA · Tokyo Short Film Fest</div>
+          </div>
+        </div>
+
+        <div class="video-entry">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/hdT2mZ8Vq8o" title="SCATOLA ROSSA" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-meta">
+            <strong>SCATOLA ROSSA — Unofficial</strong>
+            2025 · Regia: Valerio Francini
+          </div>
+        </div>
+
+      </div>
+
+      <p class="videos-label" style="margin-top: 36px">// short films</p>
+      <div class="videos-grid">
+
+        <div class="video-entry">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Oc6n8Mp8Mww" title="VERRÀ LA MORTE" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-meta">
+            <strong>VERRÀ LA MORTE</strong>
+            2025 · Cortometraggio · Regia: Valerio Francini
+          </div>
+        </div>
+
+        <div class="video-entry">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/-MMFzP4GWtA" title="SEI SOLO" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-meta">
+            <strong>SEI SOLO</strong>
+            2025 · Cortometraggio · Regia: Valerio Francini
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="transition right">CUT TO:</div>
+
+    <!-- SCENA 4: ABOUT + FOTO -->
+    <div class="slug-line">EXT. ROMA — LUCE NATURALE — QUALSIASI ORA</div>
+
+    <div class="about-block">
+      <div class="about-photo">
+        <img src="/images/valerio-francini-portrait-1.jpg" alt="Valerio Francini">
+      </div>
+      <div class="about-text">
+        <p class="character">VALERIO (V.O.)</p>
+        <p class="dialogue">Sono questo qui.</p>
+
+        <p class="character">VALERIO (V.O.) (CONT'D)</p>
+        <p class="dialogue">
+          Non sto cercando un lavoro da eseguire —<br>
+          sto cercando dei collaboratori.<br>
+          La differenza è quella tra<br>
+          un compito e una scelta.
+        </p>
+
+        <p class="character">VALERIO (V.O.) (CONT'D)</p>
+        <p class="dialogue">
+          Se vi va, ci conosciamo.
+        </p>
+      </div>
+    </div>
+
+    <div class="transition right">FADE OUT.</div>
+
+  </div>
+
+  <!-- ===================== FINE ===================== -->
+  <div class="end-block">
+
+    <div class="the-end">— THE END —</div>
+
+    <div class="signature-block">
+      <div class="sig-row">
+        <span class="sig-label">SCRITTO E DIRETTO DA:</span>
+        <div class="sig-line"></div>
+        <span class="sig-value">Valerio Francini</span>
+      </div>
+      <div class="sig-row">
+        <span class="sig-label">APPROVATO DA:</span>
+        <div class="sig-line"></div>
+        <span class="sig-value pending">Borotalco TV &nbsp;&nbsp; data: _________</span>
+      </div>
+    </div>
+
+    <div class="back-block">
+      <p class="back-note">hai sbagliato pagina? questo è il sito di valerio.</p>
+      <a class="back-link" href="/">← valeriofrancini.it</a>
+
+      <div class="contacts-row">
+        <a href="mailto:vxly.ps@gmail.com">Email ↗</a>
+        <span class="dot">·</span>
+        <a href="https://instagram.com/vxly.ps" target="_blank" rel="noopener">Instagram ↗</a>
+        <span class="dot">·</span>
+        <a href="/">valeriofrancini.it ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
