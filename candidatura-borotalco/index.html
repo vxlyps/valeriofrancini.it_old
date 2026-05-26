@@ -192,21 +192,15 @@
       margin-top: 10px;
       text-decoration: none;
     }
-    .s-imdb-text {
-      display: inline-flex;
-      align-items: center;
-      background: #f5c518;
-      color: #000;
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: 900;
-      font-size: 0.82em;
-      padding: 1px 5px 1px 4px;
-      border-radius: 2px;
-      letter-spacing: -0.02em;
-      line-height: 1.4;
+    .s-imdb-logo {
+      height: 20px;
+      width: auto;
+      filter: none;
+      vertical-align: middle;
       transition: opacity 0.3s;
     }
-    .s-imdb-badge:hover .s-imdb-text { opacity: 0.75; }
+    .s-imdb-badge:hover .s-imdb-logo { opacity: 0.75; }
+    .s-imdb-contact { height: 15px; }
 
     /* --- Crediti completi (details/summary) --- */
     .s-full-credits {
@@ -481,7 +475,7 @@
           </div>
 
           <div class="s-title-block">
-            <div class="s-title">//CANDIDATURA</div>
+            <div class="s-title">//CANDIDATURA <small style="font-size:0.65em;letter-spacing:0;text-decoration:none;">©</small></div>
             <div class="s-byline">Written and Directed by</div>
             <div class="s-author">Valerio Francini</div>
             <div class="s-submitted">
@@ -499,7 +493,7 @@
             </div>
             <div class="s-meta-right">
               Draft #01<br>
-              <del>draft #77</del><br>
+              <del>draft #07/06/1999</del><br>
               Roma, 2026
             </div>
           </div>
@@ -569,7 +563,7 @@
                   </a>
                 </div>
                 <a href="https://www.imdb.com/it/title/tt41511262/" target="_blank" rel="noopener" title="MASKARA su IMDb" class="s-imdb-badge">
-                  <span class="s-imdb-text">IMDb</span>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb" class="s-imdb-logo">
                 </a>
               </div>
               <details class="s-full-credits">
@@ -723,14 +717,13 @@
 
           <!-- FINE -->
           <div class="s-end">
-            <p class="s-the-end">— THE END —</p>
 
             <div class="s-contacts-final">
               <a href="mailto:vxly.ps@gmail.com">vxly.ps@gmail.com</a><br>
               <a href="https://instagram.com/vxly.ps" target="_blank" rel="noopener">@vxly.ps</a><br>
               <a href="/">valeriofrancini.it</a><br>
-              <a href="https://www.imdb.com/name/nm18378315/" target="_blank" rel="noopener" style="text-decoration:none;border:none;">
-                <span style="display:inline-flex;align-items:center;background:#f5c518;color:#000;font-family:Arial,sans-serif;font-weight:900;font-size:0.75em;padding:1px 5px 1px 4px;border-radius:2px;letter-spacing:-0.02em;">IMDb</span>
+              <a href="https://www.imdb.com/name/nm18378315/" target="_blank" rel="noopener" style="text-decoration:none;border:none;line-height:0;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb" class="s-imdb-logo s-imdb-contact">
               </a>
             </div>
 
