@@ -252,6 +252,33 @@ main { flex: 1 0 auto; width: 100%; }
 @media(min-width: 800px) { .accordion-title-vf { font-size: 5vw; } }
 @media(min-width: 1200px) { .accordion-title-vf { font-size: 6vw; } }
 
+/* ── Awards strip — laurel sotto gli accordion ── */
+.awards-strip-vf {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0 52px;
+    padding: 3.5rem 0 2.5rem;
+}
+.awards-strip-vf a,
+.awards-strip-vf span {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    text-decoration: none !important;
+    border: none !important;
+}
+.awards-strip-vf img {
+    height: 62px;
+    width: auto;
+    filter: var(--laurel-filter);
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    display: block;
+}
+.awards-strip-vf a:hover img { opacity: 1; }
+
 .accordion-content-vf {
     max-height: 0;
     overflow: hidden;
@@ -550,19 +577,16 @@ main { flex: 1 0 auto; width: 100%; }
 
     .accordion-button-vf { padding: 1.2em 0.4em; }
     .accordion-title-vf {
-        font-size: 2.2em;
+        font-size: 3em;
         justify-content: flex-start;
-        flex-wrap: nowrap;
-        gap: 8px;
         padding-right: 1.5em;
         align-items: center;
     }
-    .accordion-item-vf .accordion-title-vf .accordion-trophy-icon-vf {
-        height: 1.1em;
-        margin-top: -3px;
-        margin-left: 5px;
-        vertical-align: middle;
+    .awards-strip-vf {
+        gap: 16px 28px;
+        padding: 2rem 0 1.5rem;
     }
+    .awards-strip-vf img { height: 50px; }
     .plus-icon-vf { right: 0.2em; }
     .projects-grid-vf { flex-direction: column; align-items: center; }
     .project-item-vf { align-items: center; max-width: 94vw; margin-bottom: 15px; }
