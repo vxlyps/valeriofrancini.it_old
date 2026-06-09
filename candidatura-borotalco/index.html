@@ -330,15 +330,31 @@
     }
     .s-award-item:hover { opacity: 0.6; }
     .s-award-img {
-      height: 56px;
+      height: 72px;
       width: auto;
-      filter: invert(1); /* sempre scuro su sfondo bianco copione */
+      max-width: 160px;
+      filter: none; /* laurel nere su sfondo bianco — già leggibili */
     }
     .s-award-label {
       font-size: 0.66em;
       line-height: 1.3;
       color: #444;
     }
+    .s-imdb-event-row {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .s-imdb-event-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      color: #555;
+      font-size: 0.78em;
+      letter-spacing: 0.3px;
+      transition: opacity 0.3s;
+    }
+    .s-imdb-event-link:hover { opacity: 0.6; }
 
     /* --- About + foto nel copione --- */
     .s-about-block {
@@ -560,17 +576,23 @@
                   Regia: Valerio Francini &amp; Davide Paganelli · 16mm + Super8
                 </span>
                 <div class="s-awards-row">
-                  <a href="https://www.emusicawards.eu/winners/" target="_blank" rel="noopener" class="s-award-item" title="Europe Music Video Award">
-                    <img src="/images/europe-mv-award-crown.png" alt="Europe Music Video Award" class="s-award-img">
+                  <a href="https://www.imdb.com/it/event/ev0041088/2025/1/" target="_blank" rel="noopener" class="s-award-item" title="Best Rock Video — Europe Music Video Awards 2025">
+                    <img src="/images/emva-2025.png" alt="Europe Music Video Award" class="s-award-img">
                     <span class="s-award-label">Europe Music Video Award</span>
                   </a>
-                  <a href="https://timvf.ca/" target="_blank" rel="noopener" class="s-award-item" title="Toronto Independent MV Award">
-                    <img src="/images/toronto-mv-award-crown.png" alt="Toronto IMVA" class="s-award-img">
-                    <span class="s-award-label">Toronto Independent MV Award</span>
+                  <a href="https://timvf.ca/" target="_blank" rel="noopener" class="s-award-item" title="Toronto International Music Video Festival">
+                    <img src="/images/timvf-2025.png" alt="TIMVF" class="s-award-img">
+                    <span class="s-award-label">Toronto Int'l Music Video Festival</span>
                   </a>
                   <a href="https://www.tokyoshortfilmfest.com/post/maskara-yconydol-valerio-francini-davide-paganelli" target="_blank" rel="noopener" class="s-award-item" title="Tokyo International Short Film Festival">
-                    <img src="/images/TISFF.png" alt="TISFF" class="s-award-img">
+                    <img src="/images/tisff-2025.png" alt="TISFF" class="s-award-img">
                     <span class="s-award-label">Tokyo Int'l Short Film Festival</span>
+                  </a>
+                </div>
+                <div class="s-imdb-event-row">
+                  <a href="https://www.imdb.com/it/event/ev0041088/2025/1/" target="_blank" rel="noopener" class="s-imdb-event-link" title="Europe Music Video Awards 2025 su IMDb">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb" style="height:13px;width:auto;filter:none;vertical-align:middle;">
+                    <span>Best Rock Video · Europe Music Video Awards 2025 ↗</span>
                   </a>
                 </div>
                 <a href="https://www.imdb.com/it/title/tt41511262/" target="_blank" rel="noopener" title="MASKARA su IMDb" class="s-imdb-badge">
