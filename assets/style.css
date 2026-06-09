@@ -407,10 +407,11 @@ main { flex: 1 0 auto; width: 100%; }
 
 .award-trophies-vf {
     display: flex;
-    gap: 20px;
+    column-gap: 36px;
+    row-gap: 22px;
     margin-top: 3rem;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     flex-wrap: wrap;
 }
 .award-trophies-vf a {
@@ -423,8 +424,8 @@ main { flex: 1 0 auto; width: 100%; }
 .award-trophies-vf a:hover { opacity: 0.7; }
 .award-trophies-vf img {
     width: auto;
-    height: 70px;
-    max-width: 220px;
+    height: 65px;
+    max-width: 200px;
     object-fit: contain;
     border: none !important;
     filter: var(--laurel-filter);
@@ -458,8 +459,12 @@ main { flex: 1 0 auto; width: 100%; }
     .about-flex-wrapper-vf { flex-direction: column; align-items: center; gap: 30px; }
     .about-photos-vf { flex: 1 1 100%; width: 100%; max-width: 500px; }
     .about-bio-vf { max-width: 95%; font-size: 1em; text-align: left; }
-    .award-trophies-vf { justify-content: center; }
-    .award-trophies-vf img { height: 90px; }
+    .award-trophies-vf { justify-content: center; column-gap: 28px; row-gap: 20px; }
+    .award-trophies-vf img { height: 58px; max-width: 175px; }
+}
+@media(max-width: 480px) {
+    .award-trophies-vf { column-gap: 20px; row-gap: 16px; }
+    .award-trophies-vf img { height: 50px; max-width: 145px; }
 }
 
 /* --- FOOTER --- */

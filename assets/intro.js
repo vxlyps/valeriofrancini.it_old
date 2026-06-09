@@ -5,7 +5,7 @@
 (function () {
     if (sessionStorage.getItem('vf_intro_shown')) return;
 
-    var VIDEO_SRC   = '/images/vid/intro_valeriofrancini.mov';
+    var VIDEO_SRC   = '/images/vid/intro_valeriofrancini.mp4';
     var FADE_MS     = 900;   /* dissolvenza overlay → sito */
     var FALLBACK_MS = 6000;  /* skip se il video non parte entro 6s */
     var FADE_BEFORE = 0.9;   /* inizia la dissolvenza X secondi prima della fine */
@@ -36,7 +36,7 @@
 
         var src = document.createElement('source');
         src.src  = VIDEO_SRC;
-        src.type = 'video/quicktime';
+        src.type = 'video/mp4';
         video.appendChild(src);
 
         /* ── Fake loader ── */
