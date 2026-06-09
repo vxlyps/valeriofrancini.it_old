@@ -9,7 +9,7 @@
     var VIDEO_SPEED = 1.4;   /* velocità riproduzione — aumenta per accorciare */
     var FADE_MS     = 900;
     var FALLBACK_MS = 6000;
-    var FADE_BEFORE = 0.9;
+    var FADE_BEFORE = 0.15;
 
     function build() {
 
@@ -69,17 +69,18 @@
         var skip = document.createElement('button');
         skip.textContent = 'skip';
         skip.style.cssText = [
-            'position:absolute', 'bottom:32px', 'right:32px',
+            'position:absolute', 'bottom:28px', 'right:28px',
             'background:none', 'border:none',
-            'color:rgba(255,255,255,0.22)',
+            'color:rgba(255,255,255,0.5)',
             "font-family:'Inter',-apple-system,sans-serif",
             'font-size:0.58rem', 'font-weight:300',
             'letter-spacing:0.38em', 'text-transform:uppercase',
-            'padding:8px 0', 'cursor:pointer', 'z-index:3',
-            'opacity:0', 'transition:opacity 0.4s,color 0.25s'
+            'padding:16px 20px', 'cursor:pointer', 'z-index:3',
+            'opacity:0', 'transition:opacity 0.4s,color 0.25s',
+            '-webkit-tap-highlight-color:transparent'
         ].join(';');
-        skip.addEventListener('mouseover', function () { skip.style.color = 'rgba(255,255,255,0.7)'; });
-        skip.addEventListener('mouseout',  function () { skip.style.color = 'rgba(255,255,255,0.22)'; });
+        skip.addEventListener('mouseover', function () { skip.style.color = 'rgba(255,255,255,0.9)'; });
+        skip.addEventListener('mouseout',  function () { skip.style.color = 'rgba(255,255,255,0.5)'; });
 
         /* ── Dismiss ── */
         var done = false;
