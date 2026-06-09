@@ -135,3 +135,15 @@ if (contactTrigger) {
 
     requestAnimationFrame(step);
 })();
+
+// === YOUTUBE FACADE: carica il player solo al click ===
+document.querySelectorAll('.yt-lite').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + btn.dataset.id + '?autoplay=1';
+        iframe.title = btn.querySelector('img').alt;
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.allowFullscreen = true;
+        btn.replaceWith(iframe);
+    });
+});
