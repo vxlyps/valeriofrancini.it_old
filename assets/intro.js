@@ -10,6 +10,8 @@
     var FADE_MS     = 450;
     var FALLBACK_MS = 6000;
     var FADE_BEFORE = 0.08;
+    var ZOOM_BEFORE = 2.0;   /* inizia zoom CSS X secondi prima della fine */
+    var ZOOM_SCALE  = 1.6;   /* quanto zoommare — aumenta per effetto più drammatico */
 
     function build() {
 
@@ -82,6 +84,10 @@
         skip.addEventListener('mouseover', function () { skip.style.color = 'rgba(255,255,255,0.9)'; });
         skip.addEventListener('mouseout',  function () { skip.style.color = 'rgba(255,255,255,0.5)'; });
 
+        /* ── Zoom fine video — amplifica lo zoom nel naso ── */
+        var zoomStarted = false;
+        video.style.transformOrigin = 'center 47%'; /* leggermente sopra il centro */
+
         /* ── Dismiss ── */
         var done = false;
         function dismiss() {
@@ -97,7 +103,16 @@
         }
 
         video.addEventListener('timeupdate', function () {
-            if (video.duration && video.currentTime >= video.duration - FADE_BEFORE) dismiss();
+            if (!video.duration) return;
+            /* zoom in negli ultimi ZOOM_BEFORE secondi */
+            if (!zoomStarted && video.currentTime >= video.duration - ZOOM_BEFORE) {
+                zoomStarted = true;
+                var dur = Math.max(video.duration - video.currentTime, 0.3);
+                video.style.transition = 'transform ' + dur + 's ease-in, opacity 0.5s ease';
+                video.style.transform  = 'scale(' + ZOOM_SCALE + ')';
+            }
+            /* dissolvi negli ultimi FADE_BEFORE secondi */
+            if (video.currentTime >= video.duration - FADE_BEFORE) dismiss();
         });
         video.addEventListener('ended', dismiss);
         video.addEventListener('error', dismiss);
