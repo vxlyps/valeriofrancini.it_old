@@ -77,7 +77,9 @@ if (contactTrigger) {
     });
 }
 
-/* --- DVD BOUNCE (faccia che rimbalza) --- */
+/* --- DVD BOUNCE (faccia che rimbalza) ---
+   Usa transform (GPU) invece di left/top e misura le dimensioni
+   solo a init/resize: niente layout forzato a ogni frame. */
 (function dvdBounce() {
     const dvdLink = document.getElementById('dvd-link');
     const dvdImage = document.getElementById('dvd-image');
@@ -90,9 +92,17 @@ if (contactTrigger) {
     let y = 50;
     let dx = 2;
     let dy = 2;
+    let w = 0;
+    let h = 0;
+
+    function measure() {
+        const rect = dvdLink.getBoundingClientRect();
+        w = rect.width;
+        h = rect.height;
+    }
+    window.addEventListener('resize', measure);
 
     function step() {
-        const rect = dvdLink.getBoundingClientRect();
         const winWidth = window.innerWidth;
         const winHeight = window.innerHeight;
         const isMobile = winWidth < 768;
@@ -100,8 +110,8 @@ if (contactTrigger) {
 
         let hitEdge = false;
 
-        if (x + rect.width >= winWidth - margin) {
-            x = winWidth - rect.width - margin;
+        if (x + w >= winWidth - margin) {
+            x = winWidth - w - margin;
             dx = -Math.abs(dx);
             hitEdge = true;
         } else if (x <= margin) {
@@ -110,8 +120,8 @@ if (contactTrigger) {
             hitEdge = true;
         }
 
-        if (y + rect.height >= winHeight - margin) {
-            y = winHeight - rect.height - margin;
+        if (y + h >= winHeight - margin) {
+            y = winHeight - h - margin;
             dy = -Math.abs(dy);
             hitEdge = true;
         } else if (y <= margin) {
@@ -127,13 +137,21 @@ if (contactTrigger) {
 
         x += dx;
         y += dy;
-        dvdLink.style.left = `${x}px`;
-        dvdLink.style.top = `${y}px`;
+        dvdLink.style.transform = `translate(${x}px, ${y}px)`;
 
         requestAnimationFrame(step);
     }
 
-    requestAnimationFrame(step);
+    /* parte solo quando l'intro non copre più la pagina */
+    function start() {
+        if (document.getElementById('vf-intro-overlay')) {
+            setTimeout(start, 400);
+            return;
+        }
+        measure();
+        requestAnimationFrame(step);
+    }
+    start();
 })();
 
 // === YOUTUBE FACADE: carica il player solo al click ===
