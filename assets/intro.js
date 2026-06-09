@@ -13,12 +13,6 @@
 
     function build() {
 
-        /* carica Inter weight 200 per il loader */
-        var fontLink = document.createElement('link');
-        fontLink.rel  = 'stylesheet';
-        fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap';
-        document.head.appendChild(fontLink);
-
         /* ── Overlay ── */
         var overlay = document.createElement('div');
         overlay.id = 'vf-intro-overlay';
@@ -55,57 +49,21 @@
             'transition:opacity 0.45s ease'
         ].join(';');
 
-        var inner = document.createElement('div');
-        inner.style.cssText = 'display:flex;flex-direction:column;align-items:center;user-select:none;';
-
-        /* nome sito — tiny, spaced */
-        var title = document.createElement('div');
-        title.textContent = 'valeriofrancini.it';
-        title.style.cssText = [
-            'color:rgba(255,255,255,0.35)',
-            "font-family:'Inter',-apple-system,sans-serif",
-            'font-size:0.55rem',
-            'font-weight:300',
-            'letter-spacing:0.5em',
-            'text-transform:uppercase',
-            'margin-bottom:40px'
-        ].join(';');
-
-        /* barra progress — 1px */
-        var barWrap = document.createElement('div');
-        barWrap.style.cssText = [
-            'width:min(200px,52vw)',
-            'height:1px',
-            'background:rgba(255,255,255,0.1)',
-            'position:relative',
-            'overflow:hidden',
-            'margin-bottom:30px'
-        ].join(';');
-        var barFill = document.createElement('div');
-        barFill.style.cssText = [
-            'position:absolute', 'top:0', 'left:0',
-            'height:100%', 'width:0%',
-            'background:rgba(255,255,255,0.55)'
-        ].join(';');
-        barWrap.appendChild(barFill);
-
-        /* numero percentuale — hero */
+        /* percentuale — unico elemento, bold e cattivo */
         var pctEl = document.createElement('div');
         pctEl.id = 'vf-intro-pct';
         pctEl.textContent = '0%';
         pctEl.style.cssText = [
             'color:#fff',
             "font-family:'Inter',-apple-system,sans-serif",
-            'font-size:clamp(5rem,14vw,11rem)',
-            'font-weight:200',
+            'font-size:clamp(3rem,7vw,5.5rem)',
+            'font-weight:800',
             'line-height:1',
-            'letter-spacing:-0.03em'
+            'letter-spacing:-0.03em',
+            'user-select:none'
         ].join(';');
 
-        inner.appendChild(title);
-        inner.appendChild(barWrap);
-        inner.appendChild(pctEl);
-        loader.appendChild(inner);
+        loader.appendChild(pctEl);
 
         /* ── Skip — testo puro, nessun bordo ── */
         var skip = document.createElement('button');
@@ -152,7 +110,6 @@
             var interval = setInterval(function () {
                 count = Math.min(100, count + Math.floor(Math.random() * 4) + 1);
                 pctEl.textContent = count + '%';
-                barFill.style.width = count + '%';
 
                 if (count >= 100) {
                     clearInterval(interval);
