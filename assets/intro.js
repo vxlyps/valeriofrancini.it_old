@@ -9,7 +9,7 @@
     var VIDEO_SPEED = 1.4;   /* velocità riproduzione — aumenta per accorciare */
     var FADE_MS     = 450;
     var FALLBACK_MS = 6000;
-    var FADE_BEFORE = 0.08;
+    var FADE_BEFORE = 0.4;
     var ZOOM_BEFORE = 2.0;   /* inizia zoom CSS X secondi prima della fine */
     var ZOOM_SCALE  = 1.6;   /* quanto zoommare — aumenta per effetto più drammatico */
 

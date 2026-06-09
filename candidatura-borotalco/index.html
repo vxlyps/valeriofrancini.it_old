@@ -393,32 +393,27 @@
       aspect-ratio: 3/4;
       object-fit: cover;
       display: block;
-      filter: grayscale(100%);
       margin: 0 auto;
     }
 
-    /* --- Moodboard PDF collassabile --- */
-    .s-moodboard-wrap {
+    /* --- Moodboard button --- */
+    .s-moodboard-btn-wrap {
       margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px dashed #ccc;
-      max-width: 860px;
     }
-    .s-moodboard-wrap summary {
-      font-style: italic;
-      color: #666;
-      font-size: 0.85em;
-      cursor: pointer;
-      user-select: none;
-      list-style: none;
-      margin-bottom: 0;
+    .s-moodboard-btn {
+      display: inline-block;
+      padding: 9px 22px;
+      border: 1px solid #333;
+      color: #333;
+      text-decoration: none !important;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.8em;
+      letter-spacing: 2px;
+      transition: background 0.18s, color 0.18s;
     }
-    .s-moodboard-wrap summary::-webkit-details-marker { display: none; }
-    .s-moodboard-wrap[open] summary { margin-bottom: 16px; }
-    .s-pdf-embed { width: 100%; }
-    .s-pdf-embed object { display: block; }
-    @media(max-width: 700px) {
-      .s-pdf-embed object { height: 420px; }
+    .s-moodboard-btn:hover {
+      background: #111;
+      color: #fdfdfc;
     }
 
     /* --- Fine / contatti --- */
@@ -736,16 +731,9 @@
                   Regia: Valerio Francini
                 </span>
               </div>
-              <details class="s-moodboard-wrap">
-                <summary>// come sono arrivato lì — moodboard ↓</summary>
-                <div class="s-pdf-embed">
-                  <object data="/images/scatola-rossa-moodboard.pdf" type="application/pdf" width="100%" height="640">
-                    <p style="text-align:center;padding:2rem 0;font-style:italic;">
-                      <a href="/images/scatola-rossa-moodboard.pdf" target="_blank" rel="noopener">Apri il moodboard ↗</a>
-                    </p>
-                  </object>
-                </div>
-              </details>
+              <div class="s-moodboard-btn-wrap">
+                <a href="/images/scatola-rossa-moodboard.pdf" target="_blank" rel="noopener" class="s-moodboard-btn">MOODBOARD ↗</a>
+              </div>
             </div>
 
             <p class="s-video-label">// short films</p>
