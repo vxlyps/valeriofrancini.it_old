@@ -382,6 +382,45 @@
       max-width: 100%;
     }
 
+    /* --- Foto centrata sotto dialogo --- */
+    .s-about-photo-center {
+      text-align: center;
+      margin: 32px auto 10px;
+      max-width: 260px;
+    }
+    .s-about-photo-center img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      margin: 0 auto;
+    }
+
+    /* --- Moodboard PDF collassabile --- */
+    .s-moodboard-wrap {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px dashed #ccc;
+      max-width: 860px;
+    }
+    .s-moodboard-wrap summary {
+      font-style: italic;
+      color: #666;
+      font-size: 0.85em;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      margin-bottom: 0;
+    }
+    .s-moodboard-wrap summary::-webkit-details-marker { display: none; }
+    .s-moodboard-wrap[open] summary { margin-bottom: 16px; }
+    .s-pdf-embed { width: 100%; }
+    .s-pdf-embed object { display: block; }
+    @media(max-width: 700px) {
+      .s-pdf-embed object { height: 420px; }
+    }
+
     /* --- Fine / contatti --- */
     .s-end {
       border-top: 1px solid #ddd;
@@ -480,7 +519,7 @@
         <a href="/" class="header-title-link-vf">
           <h1 class="header-title-vf">Valerio Francini</h1>
         </a>
-        <p class="header-subtitle-vf">// Independent Filmmaker</p>
+        <p class="header-subtitle-vf">// regista</p>
       </div>
       <nav class="portfolio-nav-vf">
         <a href="/">Home</a>
@@ -697,6 +736,16 @@
                   Regia: Valerio Francini
                 </span>
               </div>
+              <details class="s-moodboard-wrap">
+                <summary>// come sono arrivato lì — moodboard ↓</summary>
+                <div class="s-pdf-embed">
+                  <object data="/images/scatola-rossa-moodboard.pdf" type="application/pdf" width="100%" height="640">
+                    <p style="text-align:center;padding:2rem 0;font-style:italic;">
+                      <a href="/images/scatola-rossa-moodboard.pdf" target="_blank" rel="noopener">Apri il moodboard ↗</a>
+                    </p>
+                  </object>
+                </div>
+              </details>
             </div>
 
             <p class="s-video-label">// short films</p>
@@ -732,20 +781,19 @@
               <span class="s-slug">EXT. ROMA — LUCE NATURALE — QUALSIASI ORA</span>
             </div>
 
-            <div class="s-about-block">
-              <div class="s-about-photo">
-                <img src="/images/ValerioFrancini/ValerioFrancini_PP.jpg" alt="Valerio Francini">
-              </div>
-              <div class="s-about-text">
-                <p class="s-character">VALERIO (V.O.)</p>
-                <p class="s-dialogue">Sono questo qui.</p>
+            <div class="s-about-text">
+              <p class="s-character">VALERIO (V.O.)</p>
+              <p class="s-dialogue">Sono questo qui.</p>
 
-                <p class="s-character">VALERIO (V.O.) (CONT'D)</p>
-                <p class="s-dialogue">Non sto cercando un lavoro da eseguire —<br>sto cercando dei collaboratori.<br>La differenza è quella tra<br>un compito e una scelta.</p>
+              <p class="s-character">VALERIO (V.O.) (CONT'D)</p>
+              <p class="s-dialogue">Non sto cercando un lavoro da eseguire —<br>sto cercando dei collaboratori.<br>La differenza è quella tra<br>un compito e una scelta.</p>
 
-                <p class="s-character">VALERIO (V.O.) (CONT'D)</p>
-                <p class="s-dialogue">Se vi va, ci conosciamo.</p>
-              </div>
+              <p class="s-character">VALERIO (V.O.) (CONT'D)</p>
+              <p class="s-dialogue">Se vi va, ci conosciamo.</p>
+            </div>
+
+            <div class="s-about-photo-center">
+              <img src="/images/ValerioFrancini/ValerioFrancini_PP.jpg" alt="Valerio Francini">
             </div>
 
             <div class="s-transition-out">FADE OUT.</div>

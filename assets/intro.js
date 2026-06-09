@@ -137,7 +137,11 @@
                         if (p && p.catch) p.catch(dismiss);
                         video.playbackRate = VIDEO_SPEED;
                         clearTimeout(fallback);
-                        fallback = setTimeout(dismiss, FALLBACK_MS);
+                        /* fallback basato sulla durata reale — evita di tagliare video lunghi */
+                        var safetyMs = video.duration
+                            ? Math.ceil(video.duration / VIDEO_SPEED * 1000) + 4000
+                            : 30000;
+                        fallback = setTimeout(dismiss, safetyMs);
                     }, 350);
                 }
             }, 28);
