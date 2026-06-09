@@ -256,9 +256,8 @@ main { flex: 1 0 auto; width: 100%; }
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0 30px;
+    gap: 16px 30px;
     padding: 5.5rem 0 3rem;
-    flex-wrap: nowrap;
 }
 .awards-strip-vf a,
 .awards-strip-vf span {
@@ -599,7 +598,7 @@ main { flex: 1 0 auto; width: 100%; }
     .awards-strip-vf {
         flex-wrap: wrap;
         gap: 16px 24px;
-        padding: 2.5rem 0 1.5rem;
+        padding: 4.5rem 0 1.5rem;
     }
     .awards-strip-vf img { height: 46px; }
     .plus-icon-vf { right: 0.2em; }
