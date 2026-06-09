@@ -1,15 +1,18 @@
 /* --- INTRO VIDEO — valeriofrancini.it ---
-   Mostra il video una sola volta per sessione (sessionStorage).
-   Salta l'intro se già mostrato, se il video non parte in 5s, o su errore.
+   Sequenza: fake loader → video → fade out al sito
+   SessionStorage: una sola volta per sessione.
 */
 (function () {
     if (sessionStorage.getItem('vf_intro_shown')) return;
 
-    var FADE_MS     = 700;
-    var FALLBACK_MS = 5000;
+    var VIDEO_SRC   = '/images/vid/intro_valeriofrancini.mov';
+    var FADE_MS     = 900;   /* dissolvenza overlay → sito */
+    var FALLBACK_MS = 6000;  /* skip se il video non parte entro 6s */
+    var FADE_BEFORE = 0.9;   /* inizia la dissolvenza X secondi prima della fine */
 
     function build() {
-        /* Overlay */
+
+        /* ── Overlay ── */
         var overlay = document.createElement('div');
         overlay.id = 'vf-intro-overlay';
         overlay.style.cssText = [
@@ -18,51 +21,64 @@
             'transition:opacity ' + FADE_MS + 'ms ease'
         ].join(';');
 
-        /* Video */
+        /* ── Video (nascosto durante il loader, poi fades in) ── */
         var video = document.createElement('video');
-        video.autoplay  = true;
-        video.muted     = true;
+        video.muted      = true;
         video.playsInline = true;
-        video.setAttribute('playsinline', ''); /* iOS */
-
-        /* Due sorgenti: .mov leggero (2MB) poi .mp4 come fallback */
-        var src1 = document.createElement('source');
-        src1.src  = '/images/vid/intro_valeriofrancini.mov';
-        src1.type = 'video/quicktime';
-        var src2 = document.createElement('source');
-        src2.src  = '/images/vid/intro_valeriofrancini.mp4';
-        src2.type = 'video/mp4';
-        video.appendChild(src1);
-        video.appendChild(src2);
-
+        video.setAttribute('playsinline', '');
+        video.preload    = 'auto';
         video.style.cssText = [
             'position:absolute', 'inset:0',
             'width:100%', 'height:100%',
-            'object-fit:cover', 'pointer-events:none'
+            'object-fit:cover', 'pointer-events:none',
+            'opacity:0', 'transition:opacity 0.5s ease'
         ].join(';');
 
-        /* Skip button */
+        var src = document.createElement('source');
+        src.src  = VIDEO_SRC;
+        src.type = 'video/quicktime';
+        video.appendChild(src);
+
+        /* ── Fake loader ── */
+        var loader = document.createElement('div');
+        loader.style.cssText = [
+            'position:absolute', 'inset:0',
+            'display:flex', 'flex-direction:column',
+            'align-items:center', 'justify-content:center',
+            'z-index:2', 'pointer-events:none',
+            'transition:opacity 0.45s ease'
+        ].join(';');
+        loader.innerHTML =
+            '<div style="color:#fff;text-align:center;user-select:none;">' +
+            '<div style="font-family:\'Inter\',-apple-system,sans-serif;' +
+            'font-size:0.95em;letter-spacing:4px;text-transform:uppercase;' +
+            'margin-bottom:18px;opacity:0.85;">valeriofrancini.it</div>' +
+            '<div id="vf-intro-pct" style="font-family:\'Roboto Mono\',monospace;' +
+            'font-size:0.72em;letter-spacing:5px;opacity:0.45;">0%</div>' +
+            '</div>';
+
+        /* ── Skip button (appare solo quando il video è in play) ── */
         var skip = document.createElement('button');
         skip.textContent = 'SKIP ↗';
         skip.style.cssText = [
             'position:absolute', 'bottom:28px', 'right:28px',
-            'background:none', 'border:1px solid rgba(255,255,255,0.4)',
-            'color:rgba(255,255,255,0.55)',
+            'background:none', 'border:1px solid rgba(255,255,255,0.35)',
+            'color:rgba(255,255,255,0.5)',
             "font-family:'Roboto Mono',monospace",
-            'font-size:0.72em', 'letter-spacing:1.5px',
-            'padding:7px 14px', 'cursor:pointer', 'z-index:2',
-            'transition:color 0.2s,border-color 0.2s'
+            'font-size:0.7em', 'letter-spacing:2px',
+            'padding:7px 14px', 'cursor:pointer', 'z-index:3',
+            'opacity:0', 'transition:opacity 0.4s,color 0.2s,border-color 0.2s'
         ].join(';');
         skip.addEventListener('mouseover', function () {
             skip.style.color = '#fff';
-            skip.style.borderColor = '#fff';
+            skip.style.borderColor = 'rgba(255,255,255,0.8)';
         });
         skip.addEventListener('mouseout', function () {
-            skip.style.color = 'rgba(255,255,255,0.55)';
-            skip.style.borderColor = 'rgba(255,255,255,0.4)';
+            skip.style.color = 'rgba(255,255,255,0.5)';
+            skip.style.borderColor = 'rgba(255,255,255,0.35)';
         });
 
-        /* Dismiss logic */
+        /* ── Dismiss: fade overlay → sito ── */
         var done = false;
         function dismiss() {
             if (done) return;
@@ -73,28 +89,57 @@
             overlay.style.opacity = '0';
             setTimeout(function () {
                 if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-            }, FADE_MS + 50);
+            }, FADE_MS + 60);
         }
 
-        /* Fallback: se il video non parte entro FALLBACK_MS */
+        /* ── Near-end: inizia il fade FADE_BEFORE secondi prima della fine ── */
+        video.addEventListener('timeupdate', function () {
+            if (video.duration && video.currentTime >= video.duration - FADE_BEFORE) {
+                dismiss();
+            }
+        });
+        video.addEventListener('ended', dismiss);
+        video.addEventListener('error', dismiss);
+        skip.addEventListener('click', dismiss);
+
         var fallback = setTimeout(dismiss, FALLBACK_MS);
 
-        video.addEventListener('playing', function () { clearTimeout(fallback); });
-        video.addEventListener('ended',   dismiss);
-        video.addEventListener('error',   dismiss);
-        skip.addEventListener('click',    dismiss);
+        /* ── Fake loader counter ── */
+        function runLoader() {
+            var pctEl = document.getElementById('vf-intro-pct');
+            var count = 0;
+            var interval = setInterval(function () {
+                count = Math.min(100, count + Math.floor(Math.random() * 4) + 1);
+                if (pctEl) pctEl.textContent = count + '%';
 
+                if (count >= 100) {
+                    clearInterval(interval);
+                    /* Pausa breve al 100%, poi nascondi loader e avvia video */
+                    setTimeout(function () {
+                        loader.style.opacity = '0';
+                        video.style.opacity  = '1';
+                        skip.style.opacity   = '1';
+                        var p = video.play();
+                        if (p && p.catch) p.catch(dismiss);
+                        /* Resetta fallback timer: parte solo da quando il video inizia */
+                        clearTimeout(fallback);
+                        fallback = setTimeout(dismiss, FALLBACK_MS);
+                    }, 350);
+                }
+            }, 28);
+        }
+
+        /* ── Monta nel DOM ── */
         overlay.appendChild(video);
+        overlay.appendChild(loader);
         overlay.appendChild(skip);
         document.body.style.overflow = 'hidden';
         document.body.appendChild(overlay);
 
-        /* Forza il play (alcuni browser richiedono .play() esplicito) */
-        var p = video.play();
-        if (p && p.catch) p.catch(dismiss);
+        video.load(); /* inizia buffering subito */
+        runLoader();
     }
 
-    /* Esegui appena il DOM è pronto */
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', build);
     } else {
