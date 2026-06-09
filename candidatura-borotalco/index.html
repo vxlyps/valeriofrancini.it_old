@@ -290,12 +290,6 @@
       min-width: 120px;
     }
     .s-credits-name { color: #222; }
-    .s-credits-note {
-      font-style: italic;
-      color: #777;
-      font-size: 0.9em;
-      margin-top: 8px;
-    }
     @media(max-width: 700px) {
       .s-credits-table { columns: 1; }
       .s-credits-role { min-width: 90px; }
@@ -395,25 +389,7 @@
     }
     .s-imdb-event-link:hover { opacity: 0.6; }
 
-    /* --- About + foto nel copione --- */
-    .s-about-block {
-      display: flex;
-      gap: 30px;
-      align-items: flex-start;
-      margin: 20px 0 10px;
-      max-width: 800px;
-    }
-    .s-about-photo {
-      flex: 0 0 190px;
-    }
-    .s-about-photo img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(100%);
-    }
-    .s-about-text { flex: 1; }
+    /* --- About nel copione --- */
     .s-about-text .s-character,
     .s-about-text .s-paren,
     .s-about-text .s-dialogue {
@@ -447,7 +423,6 @@
       gap: 40px;
       min-width: 260px;
       padding: 12px 18px;
-      border: 1px solid #111;
       color: #111;
       text-decoration: none !important;
       font-family: 'Courier New', Courier, monospace;
@@ -542,8 +517,6 @@
       .s-character { margin-left: 15vw; }
       .s-paren     { margin-left: 10vw; }
       .s-dialogue  { margin-left: 5vw; max-width: 90vw; }
-      .s-about-block { flex-direction: column; }
-      .s-about-photo { flex: none; width: 100%; max-width: 220px; }
       /* About text: dialoghi a sinistra senza rientri extra */
       .s-about-text .s-character,
       .s-about-text .s-paren,
@@ -871,6 +844,10 @@
           <a href="mailto:vxly.ps@gmail.com">EMAIL ↗</a>
           <span>·</span>
           <a href="https://instagram.com/vxly.ps" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+          <span class="footer-imdb-sep">·</span>
+          <a href="https://www.imdb.com/name/nm18378315/" target="_blank" rel="noopener" class="footer-imdb-vf" title="IMDb">
+            <img src="/images/logos/imdb.svg" alt="IMDb" class="imdb-logo-real" style="height:22px;width:auto;filter:none;">
+          </a>
           <div class="theme-switch-container">
             <div class="theme-dot light" onclick="setTheme('light')" title="Light Mode"></div>
             <div class="theme-dot dark" onclick="setTheme('dark')" title="Dark Mode"></div>
