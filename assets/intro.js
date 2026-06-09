@@ -7,9 +7,9 @@
 
     var VIDEO_SRC   = '/images/vid/intro_valeriofrancini.mp4';
     var VIDEO_SPEED = 1.4;   /* velocità riproduzione — aumenta per accorciare */
-    var FADE_MS     = 900;
+    var FADE_MS     = 450;
     var FALLBACK_MS = 6000;
-    var FADE_BEFORE = 0.15;
+    var FADE_BEFORE = 0.5;
 
     function build() {
 
