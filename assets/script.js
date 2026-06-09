@@ -83,8 +83,8 @@ if (contactTrigger) {
     const dvdImage = document.getElementById('dvd-image');
     if (!dvdLink || !dvdImage) return;
 
-    const imgNormale = '/images/VF.png';
-    const imgSbatte = '/images/ValerioFrancini_arrogante.png';
+    const imgNormale = '/images/ValerioFrancini/VF.png';
+    const imgSbatte = '/images/ValerioFrancini/ValerioFrancini_arrogante.png';
 
     let x = 50;
     let y = 50;

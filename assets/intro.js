@@ -5,7 +5,6 @@
 (function () {
     if (sessionStorage.getItem('vf_intro_shown')) return;
 
-    var VIDEO_SRC   = '/images/vid/intro_valeriofrancini.mp4';
     var FADE_MS     = 700;
     var FALLBACK_MS = 5000;
 
@@ -21,11 +20,21 @@
 
         /* Video */
         var video = document.createElement('video');
-        video.src       = VIDEO_SRC;
         video.autoplay  = true;
         video.muted     = true;
         video.playsInline = true;
         video.setAttribute('playsinline', ''); /* iOS */
+
+        /* Due sorgenti: .mov leggero (2MB) poi .mp4 come fallback */
+        var src1 = document.createElement('source');
+        src1.src  = '/images/vid/intro_valeriofrancini.mov';
+        src1.type = 'video/quicktime';
+        var src2 = document.createElement('source');
+        src2.src  = '/images/vid/intro_valeriofrancini.mp4';
+        src2.type = 'video/mp4';
+        video.appendChild(src1);
+        video.appendChild(src2);
+
         video.style.cssText = [
             'position:absolute', 'inset:0',
             'width:100%', 'height:100%',
