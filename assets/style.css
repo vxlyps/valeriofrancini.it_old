@@ -277,6 +277,11 @@ main { flex: 1 0 auto; width: 100%; }
     display: block;
 }
 .awards-strip-vf a:hover img { opacity: 1; }
+.awards-strip-break {
+    flex-basis: 100%;
+    height: 0;
+}
+.awards-strip-photovogue { height: 38px; }
 
 .accordion-content-vf {
     max-height: 0;
@@ -601,6 +606,7 @@ main { flex: 1 0 auto; width: 100%; }
         padding: 4.5rem 0 1.5rem;
     }
     .awards-strip-vf img { height: 46px; }
+    .awards-strip-vf img.awards-strip-photovogue { height: 32px; }
     .plus-icon-vf { right: 0.2em; }
     .projects-grid-vf { flex-direction: column; align-items: center; }
     .project-item-vf { align-items: center; max-width: 94vw; margin-bottom: 15px; }
